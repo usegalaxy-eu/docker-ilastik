@@ -1,2 +1,2 @@
-# docker-qupath
-Docker image for QuPath to be used as Galaxy IT
+# docker-odv
+Docker image for ODV
