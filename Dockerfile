@@ -12,23 +12,27 @@ RUN apt-get update -y && \
          qt5dxcb-plugin && \
      rm -rf /var/lib/apt/lists/*
 
-
-COPY startapp.sh /startapp.sh
-RUN chmod +x /startapp.sh && \
-    mkdir -p /app/odv
-
-# --image foo.tiff
-
 RUN mkdir -p /opt/qupath &&\
-    chmod 777 /opt/qupath
-ADD https://github.com/qupath/qupath/releases/download/v0.4.3/QuPath-0.4.3-Linux.tar.xz /opt/qupath/
-RUN cd /opt/qupath && tar -xvf QuPath-0.4.3-Linux.tar.xz && \
+    chmod 777 /opt/qupath &&\
+    cd /opt/qupath/ && \
+    wget https://github.com/qupath/qupath/releases/download/v0.4.3/QuPath-0.4.3-Linux.tar.xz &&\
+    tar -xvf QuPath-0.4.3-Linux.tar.xz && \
     rm /opt/qupath/QuPath-0.4.3-Linux.tar.xz && \
     chmod u+x /opt/qupath/QuPath/bin/QuPath
 
 # Generate and install favicons.
 RUN APP_ICON_URL=https://github.com/qupath/qupath/wiki/images/qupath_128.png && \
     install_app_icon.sh "$APP_ICON_URL"
+
+COPY startapp.sh /startapp.sh
+RUN chmod +x /startapp.sh
+
+# Installing a few extensions
+RUN cd /opt/qupath/QuPath/lib/app/ && \
+    wget https://github.com/qupath/qupath-extension-djl/releases/download/v0.2.0/qupath-extension-djl-0.2.0.jar &&\
+    wget https://github.com/qupath/qupath-extension-stardist/releases/download/v0.4.0/qupath-extension-stardist-0.4.0.jar &&\
+    sed -i '/^\[Application\]$/a app.classpath=$APPDIR/qupath-extension-djl-0.2.0.jar' QuPath.cfg  && \
+    sed -i '/^\[Application\]$/a app.classpath=$APPDIR/qupath-extension-stardist-0.4.0.jar' QuPath.cfg
 
 # Set the name of the application.
 ENV APP_NAME="QuPath"

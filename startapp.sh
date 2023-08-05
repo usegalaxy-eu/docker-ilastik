@@ -15,5 +15,6 @@
 #-----------------------------------------------------------------------
 # nothing to be changed below this line
 
+HOME="/tmp"
 
-exec /opt/qupath/QuPath/bin/QuPath $1 $2 $3 $4 $5
+_JAVA_OPTIONS="-Duser.home=${HOME} -Djavafx.cachedir=/tmp" exec /opt/qupath/QuPath/bin/QuPath --image /opt/qupath/infile.tiff --quiet
