@@ -25,3 +25,6 @@ Once you are in the container you can start the application with:
 
 Adding extensions is as easy as [downloading the JAR file and placing them in the appropriate directory](https://github.com/bgruening/docker-qupath/blob/5bb8a2c6207be720b81c0c3c9c3afba402098dbe/Dockerfile#L32).
 
+### Configuration
+
+This image is based on top of the fantastic work of Jocelyn Le Sage [base GUI image](https://github.com/jlesage/docker-baseimage-gui). Please consult the documentation of the [upstream container](https://github.com/jlesage/docker-baseimage-gui).
