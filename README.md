@@ -28,3 +28,9 @@ Adding extensions is as easy as [downloading the JAR file and placing them in th
 ### Configuration
 
 This image is based on top of the fantastic work of Jocelyn Le Sage [base GUI image](https://github.com/jlesage/docker-baseimage-gui). Please consult the documentation of the [upstream container](https://github.com/jlesage/docker-baseimage-gui).
+
+### Galaxy integration
+
+Galaxy can run arbitrary Virtual Research Environments (VREs). In Galaxy terms, such VRE's are called "Interactive Tools", as they are using the same subsystem then normal Galaxy tools.
+The only requirement is that those tools needs to run in containers and expose a port(s) to which Galaxy can redirect users. The Docker image for QuPath you can find in this repository.
+The Galaxy tool defintion for the QuPath Interactive tool can be found [here](https://github.com/usegalaxy-eu/galaxy/blob/release_23.0_europe/tools/interactive/interactivetool_qupath.xml).
