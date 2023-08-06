@@ -4,7 +4,7 @@
 
 [QuPath](https://qupath.github.io) Bioimage Analysis is now available in [Galaxy](https://usegalaxy.eu/root?tool_id=interactive_tool_qupath).
 
-![qupath_in_galaxy](https://github.com/bgruening/docker-qupath/assets/469983/a32a535b-bbae-4f32-8a5d-d04e1b546d9b)
+![QuPath in Galaxy](./qupath_in_galaxy.png)
 
 
 ### Run the image
