@@ -1,4 +1,4 @@
-FROM jlesage/baseimage-gui:ubuntu-22.04-v4 AS build
+FROM jlesage/baseimage-gui:ubuntu-22.04-v4.4.2 AS build
 
 MAINTAINER Bjoern Gruening, bjoern.gruening@gmail.com
 
@@ -8,7 +8,6 @@ RUN apt-get update -y && \
          bzip2 \
          ca-certificates \
          libgl1 \
-        # openjfx \
          qt5dxcb-plugin \
          wget && \
      rm -rf /var/lib/apt/lists/*
@@ -25,8 +24,8 @@ RUN mkdir -p /opt/ilastik &&\
     ln -s /opt/ilastik/ilastik-$VERSION-Linux/run_ilastik.sh /bin/ilastik
 
 # Generate and install favicons.
-#RUN APP_ICON_URL=https://www.ilastik.org/assets/ilastik-logo.png && \
-#    install_app_icon.sh "$APP_ICON_URL"
+RUN APP_ICON_URL=https://www.ilastik.org/assets/ilastik-logo.png && \
+   install_app_icon.sh "$APP_ICON_URL"
 
 EXPOSE 5800
 
