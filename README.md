@@ -9,13 +9,18 @@ TODO: Badge usegalaxy.eu ilastik
 You can start the container outside of Galaxy with:
 
 ```bash
-docker run -i -t --rm -v input_dir:/config/input_dir -p 5800:5800 TODO bash
+docker run -i -t --rm -v $PWD:$PWD:rw -e HOME=$PWD -p 5800:5800 TODO
 ```
 
-Once you are in the container you can start the application with:
+This will display Ilastik and you will be able to read and write into your current folder.
 
+More complex ilastik options can be set by setting up an executable file at `/bin/run_ilastik`.
+
+For example:
 ```bash
-ilastik
+echo  "echo \"ilastik --new_project \$HOME/My_Proj.ilp --workflow PixelClassificationWorkflow\" > run_ilastik && chmod +x ./run_ilastik && cp run_ilastik /bin/&& /init" > todo.sh
+
+docker run -i -t --rm -v $PWD:$PWD:rw -e HOME=$PWD -w $PWD -p 5800:5800 TODO /bin/sh $PWD/todo.sh 
 ```
 
 ### Galaxy integration

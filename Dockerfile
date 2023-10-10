@@ -30,8 +30,8 @@ RUN mkdir -p /opt/ilastik &&\
 
 EXPOSE 5800
 
-#COPY startapp.sh /startapp.sh
-#RUN chmod +x /startapp.sh
+COPY startapp.sh /startapp.sh
+RUN chmod +x /startapp.sh
 
 # Set the name of the application.
 ENV APP_NAME="Ilastik"

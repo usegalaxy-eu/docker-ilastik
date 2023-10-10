@@ -2,4 +2,9 @@
 
 # Calls the symlink under /bin
 #HOME="/tmp" 
-ilastik
+if [ ! -e /bin/run_ilastik ]; then
+    echo "RUNNING ILASTIK"
+    ilastik
+else
+    run_ilastik
+fi
