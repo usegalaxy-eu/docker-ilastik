@@ -1,10 +1,10 @@
 #!/bin/sh -f
 
 # Calls the symlink under /bin
-#HOME="/tmp" 
-if [ ! -e /bin/run_ilastik ]; then
-    echo "RUNNING ILASTIK"
+if [ ! -e /bin/ilastik_with_args ]; then
+    echo "RUNNING ILASTIK WITHOUT ARGS"
     ilastik
 else
-    run_ilastik
+    echo "RUNNING ILASTIK WITH CUSTOM ARGS"
+    ilastik_with_args
 fi
