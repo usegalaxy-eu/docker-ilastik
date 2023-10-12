@@ -14,7 +14,7 @@ docker run -i -t --rm -v $PWD:$PWD:rw -e HOME=$PWD -p 5800:5800 TODO
 
 This will display Ilastik and you will be able to read and write into your current folder.
 
-More complex ilastik options can be set by setting up an executable file at `/bin/ilastik_with_args`.
+More complex Ilastik options can be set by setting up an executable file at `/bin/ilastik_with_args`.
 
 For example:
 ```bash
