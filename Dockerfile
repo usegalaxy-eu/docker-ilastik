@@ -1,17 +1,16 @@
-FROM jlesage/baseimage-gui:ubuntu-22.04-v4 AS build
+FROM jlesage/baseimage-gui:ubuntu-22.04-v4.4.2 AS build
 
 MAINTAINER Bjoern Gruening, bjoern.gruening@gmail.com
 
 RUN apt-get update -y && \
-     apt-get dist-upgrade -y && \
-     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-         bzip2 \
-         ca-certificates \
-         libgl1 \
-        # openjfx \
-         qt5dxcb-plugin \
-         wget && \
-     rm -rf /var/lib/apt/lists/*
+    apt-get dist-upgrade -y && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        bzip2 \
+        ca-certificates \
+        libgl1 \
+        qt5dxcb-plugin \
+        wget && \
+    rm -rf /var/lib/apt/lists/*
 
 ARG VERSION=1.4.0
 
@@ -25,13 +24,13 @@ RUN mkdir -p /opt/ilastik &&\
     ln -s /opt/ilastik/ilastik-$VERSION-Linux/run_ilastik.sh /bin/ilastik
 
 # Generate and install favicons.
-#RUN APP_ICON_URL=https://www.ilastik.org/assets/ilastik-logo.png && \
-#    install_app_icon.sh "$APP_ICON_URL"
+RUN APP_ICON_URL=https://www.ilastik.org/assets/ilastik-logo.png && \
+    install_app_icon.sh "$APP_ICON_URL"
 
 EXPOSE 5800
 
-#COPY startapp.sh /startapp.sh
-#RUN chmod +x /startapp.sh
+COPY startapp.sh /startapp.sh
+RUN chmod +x /startapp.sh
 
 # Set the name of the application.
 ENV APP_NAME="Ilastik"
