@@ -12,7 +12,7 @@ RUN apt-get update -y && \
         wget && \
     rm -rf /var/lib/apt/lists/*
 
-ARG VERSION=1.4.0
+ARG VERSION=1.4.1.post1
 
 RUN mkdir -p /opt/ilastik &&\
     chmod 777 /opt/ilastik &&\
